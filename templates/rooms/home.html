@@ -1,0 +1,28 @@
+<!-- templates 폴더를 기준으로 같은 폴더에 있다고 생각하면 된다. -->
+{% extends "base.html" %}
+
+{% block page_name %}
+    Home
+{% endblock page_name %}
+
+{% block content %}    
+    {% for room in page.object_list %}
+        <h1>{{room.name}} / ${{room.price}}</h1>
+    {% endfor %}
+
+    <h5>
+    {% if page.has_previous %}
+        {% comment %} <a href="?page={{page.number|add:-1}}">Previous</a> {% endcomment %}
+        <a href="?page={{page.previous_page_number}}">Previous</a>
+    {% endif %}
+    Page {{page.number}} of {{page.paginator.num_pages}}
+    {% if page.has_next %}
+    {% comment %} <a href="?page={{page.number|add:1}}">Next</a> {% endcomment %}
+    <a href="?page={{page.next_page_number}}">Next</a>
+    {% endif %}
+    </h5>
+
+    {% comment %} {% for page in page_range %}
+        <a href="?page={{page}}">{{page}}</a>
+    {% endfor %} {% endcomment %}
+{% endblock %}

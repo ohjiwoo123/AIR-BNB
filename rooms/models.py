@@ -79,15 +79,21 @@ class Room(core_models.TimeStampedModel):
     facilities = models.ManyToManyField("Facility", related_name="rooms", blank=True)
     house_rules = models.ManyToManyField("HouseRule", related_name="rooms", blank=True)
 
+    def save(self, *args, **kwargs):
+        self.city = str.capitalize(self.city)
+        super().save(*args, **kwargs)
+
     def __str__(self):
         return self.name
 
     def total_rating(self):
         all_reviews = self.reviews.all()
         all_ratings = 0
-        for review in all_reviews:
-            all_ratings += review.rating_average()
-        return round(all_ratings / len(all_reviews), 2)
+        if len(all_reviews) > 0:
+            for review in all_reviews:
+                all_ratings += review.rating_average()
+            return round(all_ratings / len(all_reviews), 2)
+        return 0
 
 
 # 파이썬은 파일을 상하 수직방향으로 읽기 때문에 포토 클래스가 룸 클래스 밑에 있어야 한다.(아래에 room = models.ForeignKey(Room)인자를 사용하기 위해서)
@@ -95,7 +101,7 @@ class Photo(core_models.TimeStampedModel):
     """Photo Model Definition"""
 
     caption = models.CharField(max_length=80)
-    file = models.ImageField()
+    file = models.ImageField(upload_to="room_photos")
     # 내가 room을 지우면 사진도 연결되어있기 때문에 함께 지워져야 한다.
     # "Room" string으로 사용할 수도 있다.
     # room = models.ForeignKey(Room, on_delete=models.CASCADE)

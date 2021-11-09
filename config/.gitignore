@@ -1,0 +1,8 @@
+
+
+# Pyre type checker
+.pyre/
+
+# Mac
+.DS_Store
+uploads/
