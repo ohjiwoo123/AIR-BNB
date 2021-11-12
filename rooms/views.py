@@ -1,3 +1,4 @@
+from django.http.response import Http404
 from django.utils import timezone
 from django.shortcuts import redirect, render
 from django.urls import reverse
@@ -26,5 +27,9 @@ def room_detail(request, pk):
     try:
         room = models.Room.objects.get(pk=pk)
         return render(request, "rooms/detail.html", {"room": room})
+
+    # if number is not exist : Show Http Error
     except models.Room.DoesNotExist:
-        return redirect(reverse("core:home"))
+        raise Http404()
+        # Redirect To the Home Screen
+        # return redirect(reverse("core:home"))
