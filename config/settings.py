@@ -142,3 +142,14 @@ AUTH_USER_MODEL = "users.User"
 MEDIA_ROOT = os.path.join(BASE_DIR, "uploads")
 
 MEDIA_URL = "/media/"
+
+# Email Configuration
+EMAIL_HOST = "smtp.mailgun.org"
+EMAIL_PORT = "587"
+EMAIL_HOST_USER = os.environ.get("MAILGUN_USERNAME")
+# EMAIL_HOST_USER = "airbnb@sandboxa88576d9600c4814bc83af2cdb8fa72f.mailgun.org"
+EMAIL_HOST_PASSWORD = os.environ.get("MAILGUN_PASSWORD")
+# EMAIL_HOST_PASSWORD = "f1a332dd8a407cf4df40926cfc47d587-7dcc6512-9fcbb752"
+# noreply 같은 이메일, 하지만 도메인은 mailgun에서 준 것이어야 한다.
+EMAIL_FROM = os.environ.get("MAILGUN_USERNAME")
+# EMAIL_FROM = "airbnb@sandboxa88576d9600c4814bc83af2cdb8fa72f.mailgun.org"
