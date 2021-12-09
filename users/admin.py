@@ -25,6 +25,7 @@ class CustomUserAdmin(admin.ModelAdmin):
                     "language",
                     "currency",
                     "superhost",
+                    "login_method",
                 )
             },
         ),
@@ -45,4 +46,5 @@ class CustomUserAdmin(admin.ModelAdmin):
         "is_superuser",
         "email_verified",
         "email_secret",
+        "login_method",
     )
