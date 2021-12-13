@@ -172,7 +172,7 @@ def kakao_callback(request):
             headers={"Authorization": f"Bearer {access_token}"},
         )
         profile_json = profile_request.json()
-        print(profile_json)
+        # print(profile_json)
         properties = profile_json.get("properties")
         nickname = properties.get("nickname")
         profile_image = properties.get("profile_image")
