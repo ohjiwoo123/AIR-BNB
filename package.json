@@ -2,23 +2,23 @@
   "name": "airbnb-clone",
   "version": "1.0.0",
   "description": "Air-BNB-Clone-Coding",
+  "scripts": {
+    "css": "gulp"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/ohjiwoo123/AIR-BNB.git"
   },
-  "scripts": {
-    "css": "gulp"
-  },
-  "homepage": "https://github.com/ohjiwoo123/AIR-BNB#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.0",
+    "@tailwindcss/postcss7-compat": "^2.2.17",
+    "autoprefixer": "^9.8.8",
     "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
     "gulp-csso": "^4.0.1",
-    "gulp-postcss": "^9.0.1",
+    "gulp-postcss": "^8.0.0",
     "gulp-sass": "^5.0.0",
     "node-sass": "^7.0.0",
-    "postcss": "^8.4.5",
-    "sass": "^1.45.0",
-    "tailwindcss": "^3.0.1"
+    "postcss": "^7.0.39",
+    "sass": "^1.45.0"
   }
 }

@@ -99,6 +99,10 @@ class Room(core_models.TimeStampedModel):
             return round(all_ratings / len(all_reviews), 2)
         return 0
 
+    def first_photo(self):
+        (photo,) = self.photos.all()[:1]
+        return photo.file.url
+
 
 # 파이썬은 파일을 상하 수직방향으로 읽기 때문에 포토 클래스가 룸 클래스 밑에 있어야 한다.(아래에 room = models.ForeignKey(Room)인자를 사용하기 위해서)
 class Photo(core_models.TimeStampedModel):
