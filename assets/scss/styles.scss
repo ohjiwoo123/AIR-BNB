@@ -101,9 +101,8 @@ form {
 
 .cal-grid {
     display: grid;
-    grid-template-columns: repeat(7,1fr);
-    grid-gap: 10px;
-    justify-items: center;
+    grid-template-columns: repeat(7, 1fr);
+    justify-items: center
 }
 
-@tailwind utilities;
+@tailwind utilities;    

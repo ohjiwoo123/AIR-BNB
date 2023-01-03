@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 from django_countries.fields import CountryField
 from django.urls import reverse
@@ -112,8 +113,14 @@ class Room(core_models.TimeStampedModel):
         return photos
 
     def get_calendars(self):
-        this_month = Calendar(2023, 1)
-        next_month = Calendar(2023, 2)
+        now = timezone.now()
+        this_year = now.year
+        this_month = now.month
+        next_month = this_month + 1
+        if this_month == 12:
+            next_month = 1
+        this_month = Calendar(this_year, this_month)
+        next_month = Calendar(this_year, next_month)
         return [this_month, next_month]
 
 # 파이썬은 파일을 상하 수직방향으로 읽기 때문에 포토 클래스가 룸 클래스 밑에 있어야 한다.(아래에 room = models.ForeignKey(Room)인자를 사용하기 위해서)
