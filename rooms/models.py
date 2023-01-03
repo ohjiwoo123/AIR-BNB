@@ -3,6 +3,7 @@ from django_countries.fields import CountryField
 from django.urls import reverse
 from core import models as core_models
 from users import models as user_models
+from cal import Calendar
 
 # 처음은 파이썬 관련, 다음은 장고, 외부패키지, 내가 만든 패키지
 # Create your models here.
@@ -100,9 +101,20 @@ class Room(core_models.TimeStampedModel):
         return 0
 
     def first_photo(self):
-        (photo,) = self.photos.all()[:1]
-        return photo.file.url
+        try:
+            (photo,) = self.photos.all()[:1]
+            return photo.file.url
+        except ValueError:
+            return None
+    
+    def get_next_four_photos(self):
+        photos = self.photos.all()[1:5]
+        return photos
 
+    def get_calendars(self):
+        this_month = Calendar(2023, 1)
+        next_month = Calendar(2023, 2)
+        return [this_month, next_month]
 
 # 파이썬은 파일을 상하 수직방향으로 읽기 때문에 포토 클래스가 룸 클래스 밑에 있어야 한다.(아래에 room = models.ForeignKey(Room)인자를 사용하기 위해서)
 class Photo(core_models.TimeStampedModel):

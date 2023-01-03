@@ -23,17 +23,21 @@
     @apply text-center py-3 rounded-lg font-light text-lg w-full text-white bg-red-500;
 }
 
+input[type="checkbox"] {
+    width:auto;
+}
+
 input,
 textarea,
 select {
-    @apply rounded-sm py-5 font-light text-lg w-full text-left border border-gray-600 px-5;
+    @apply rounded-sm font-light text-sm w-full text-left border border-gray-600 px-2 py-1;
     &:focus {
         @apply outline-none border-teal-500;
     }
 }
 
 select {
-    height : 50px;
+    height : 60px;
 }
 
 textarea {
@@ -55,7 +59,8 @@ form {
         }
     }
 }
-@keyframes messageFadeIn{
+
+@keyframes messageFadeIn {
     0%{
         opacity:0;
         transform: translateY(-50px);
@@ -74,7 +79,7 @@ form {
         transform: translateY(-50px);
     }
 }
-.message{
+.message {
     animation: messageFadeIn 5s ease-in-out forwards;
     &.error{
         @apply bg-red-600;
@@ -88,6 +93,17 @@ form {
     &.warning{
         @apply bg-yellow-400;
     }
+}
+
+.border-section {
+    @apply border-b border-gray-400 pb-5 mt-5;
+}
+
+.cal-grid {
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    grid-gap: 10px;
+    justify-items: center;
 }
 
 @tailwind utilities;

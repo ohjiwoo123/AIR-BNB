@@ -50,7 +50,7 @@ PROJECT_APPS = [
 
 THIRD_PARTY_APPS = ["django_countries", "django_seed"]
 
-INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS
+INSTALLED_APPS = DJANGO_APPS + PROJECT_APPS + THIRD_PARTY_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -155,3 +155,7 @@ EMAIL_HOST_PASSWORD = "f1a332dd8a407cf4df40926cfc47d587-7dcc6512-9fcbb752"
 # noreply 같은 이메일, 하지만 도메인은 mailgun에서 준 것이어야 한다.
 # EMAIL_FROM = os.environ.get("MAILGUN_USERNAME")
 EMAIL_FROM = "airbnb@sandboxa88576d9600c4814bc83af2cdb8fa72f.mailgun.org"
+
+# Auth
+
+LOGIN_RUL = "/users/login/"
