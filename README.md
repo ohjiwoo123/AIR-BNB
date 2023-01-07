@@ -22,6 +22,6 @@
 ## 설정방법
 1. 가상환경접속 : ```pipenv shell```  
 2. 실행 : ```python manage.py runserver```  
-3. 데이터모델 등록 및 적용 : python manage.py makemigration && migrate
+3. 데이터모델 등록 및 적용 : ```python manage.py makemigration && migrate```
 4. URL : http://127.0.0.1:8000/  
 5. 관리자페이지 : http://127.0.0.1:8000/admin  
